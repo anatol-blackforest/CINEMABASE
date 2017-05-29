@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>{{ title }}</title>
+        <link rel='stylesheet' href='/stylesheets/style.css'>
+		<script src="/javascripts/script.js"></script>
+	</head>
+
+	<body>
+		<div class="tail-top">
+			<div class="tail-bottom">
+				<div id="main">
+		<!-- HEADER -->
+					<div id="header">
+						<div class="row-1">
+							<div class="fleft"><a href="/">Кино<span>помоечка</span></a></div>
+						</div>
+						<div class="row-2">
+
+							<h3>Добавить <span>фильм</span></h3>
+
+							<form id="upload" name="form" method="post" enctype="multipart/form-data" action="/">
+
+                                <fieldset>
+                                    <div class="field"><label>Название*: <input type="text" name="title"></label></div>
+                                    <div class="field"><label>Страна: <input type="text" name="country"></label></div>
+                                    <div class="field"><label>Жанр: <input type="text" name="genre"></label></div>
+                                    <div class="field"><label>Режиссер: <input type="text" name="author"></label></div>
+                                    <div class="field"><label>В ролях: <input type="text" name="actors"></label></div>
+                                    <div class="field"><label>Продолжительность (мин): <input type="number" min="15" max="300" name="duration"></label></div>
+                                    <div class="field"><label>Рейтинг IMDB: <input type="text" name="imdb"></label></div>
+                                    <div class="field"><label>Обложка: <input type="file" name="preview"></label></div>
+                                    <div class="field"><label>Описание*: </label>
+                                        <textarea name="about" id="" cols="30" rows="10"></textarea>
+                                    </div>
+									<input type="submit" value="Добавить">
+								</fieldset>
+
+
+							</form>
+						</div>
+					</div>
+					
+		<!-- CONTENT -->
+					<div id="content">
+						<div class="box">
+							<div class="border-right">
+								<div class="border-left">
+									<div class="inner">
+										<h3>Список <span>фильмов</span></h3>
+										<ul class="list">
+											{% for item in films|reverse %}
+												<li>
+													<span data-delete="{{item.ID}}" class="delete">x delete</span>
+
+													{% if item.preview %}
+													<div class="poster"><img src="/images/{{item.preview}}" alt="{{item.title}}" /></div>
+													{% else %}
+													<div class="poster"><img src="/images/no-poster.png" alt="{{item.title}}" /></div>
+													{% endif %}
+													
+													<p class="p1">Название картины: {{item.title}}</p>
+													<p class="p1">Страна: {{item.country}}</p>
+													<p class="p1">Жанр: {{item.genre}}</p>
+													<p class="p1">Режиссер: {{item.author}}</p>
+													<p class="p1">В ролях: {{item.actors}}</p>
+													<p class="p1">Продолжительность (мин): {{item.duration}}</p>
+													<p class="p1">Рейтинг IMDB: {{item.imdb}}</p>
+													<p class="p1">Описание: {{item.about}}</p>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		<!-- FOOTER -->
+					<div id="footer">
+						<div class="left">
+							<div class="right">
+								<div class="inside">
+									&copy; Верните ex.ua ироды!
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
