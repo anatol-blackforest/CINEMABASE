@@ -77,7 +77,8 @@ ul, ol {list-style:none}
 .img-box1.alt img {margin-top:0}
 .img-box1 img {float:left;margin:-10px 20px 0 0}
 p {margin-bottom:15px;line-height:1.714em}
-.p1 {margin-bottom:23px}
+.p1 {margin-bottom:15px}
+.p1 span{color: #fff;}
 .address {width:100%;overflow:hidden;line-height:1.714em}
 .address span {color:#fff}
 .address .fleft {padding-right:43px !important;padding-right:40px}
