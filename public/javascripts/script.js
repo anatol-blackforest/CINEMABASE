@@ -2,6 +2,9 @@ window.onload = function(){
 
   const remover = document.getElementsByClassName("remover");
   const modal = document.getElementById("modal");
+  const upload = document.getElementById("upload");
+  const title = document.getElementById("title");
+  const about = document.getElementById("about");
 
   document.addEventListener("click", function(e){
     
@@ -24,6 +27,15 @@ window.onload = function(){
     //     modal.querySelector("div img").setAttribute("src", e.target.src);
     //     modal.classList.toggle("hidden");
     // }
+  });
+
+  upload.addEventListener("submit", function(e){
+  	e.preventDefault();
+  	if(title.value && about.value){
+  		upload.submit();
+  	}else{
+  		alert("Введите название и описание!");
+  	}
   });
 
 // модальное окно
