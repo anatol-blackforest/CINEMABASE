@@ -9,7 +9,14 @@
 }
 .delete{
     cursor:pointer;
-    display:block;
+    display:inline-block;
+	background:#d72a18;
+	color:#fff;
+	padding:0 10px;
+	position:absolute;
+	right:0;
+	top:40px;
+	border-radius: 5px;
 }
 
 /* TAGS */
@@ -64,7 +71,7 @@ ul, ol {list-style:none}
 .movies li p {margin:5px 0 15px 0;padding-right:40px}
 .movies li p span {color:#fff}
 .list {margin-top:-30px}
-.list li {width:100%;overflow:hidden;vertical-align:top;line-height:1.714em;padding-top:40px}
+.list li {width:100%;overflow:hidden;vertical-align:top;line-height:1.714em;padding-top:40px;position:relative}
 .list li img {float:left; }
 .list li a {text-decoration:none}
 .list li a:hover {color:#d72a18}
