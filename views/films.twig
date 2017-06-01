@@ -22,8 +22,12 @@
 
 							<h3>Добавить <span>фильм</span></h3>
 
-							<form id="upload" name="form" method="post" enctype="multipart/form-data" action="/">
+							{% if hint %}
+							    <h4><span>Ошибочка: {{hint}}</span></h4>
+							{% endif %}
 
+							<form id="upload" name="form" method="post" enctype="multipart/form-data" action="/">
+                                
                                 <fieldset>
                                     <div class="field"><label>Название*: <input type="text" id="title" name="title"></label></div>
                                     <div class="field"><label>Страна: <input type="text" name="country"></label></div>
