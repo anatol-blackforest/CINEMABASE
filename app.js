@@ -11,9 +11,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const fs = require('fs');
-const util = require('util');
-
 let messages = ["Very big image! (must be less than 2 mb)", "Please upload image only!"];
 
 app.set("twig options", {strict_variables: false});
