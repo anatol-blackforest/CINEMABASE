@@ -29,10 +29,10 @@
 	background:#d72a18;
 }
 .edit::before{
-	content:"X";
+	content:"+";
 }
 .edit.toggled::before{
-	content:"-";
+    content:"^";
 }
 .edit{
 	background:green;
