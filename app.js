@@ -26,33 +26,41 @@ app.get('/', (req, res) => {
 	});
 });
 
+
+let editor = function(err, req, res, typeOfEdit) {
+	//где typeOfEdit - тип формы (редактирование или добавление нового)
+	if (err){
+		list((err, films) => {
+			res.render('films.twig',{films: films, hint: messages[0]});
+		});
+	} else {
+        if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') == -1){
+			list((err, films) => {
+				res.render('films.twig',{films: films, hint: messages[1]});
+			});
+		} else {
+			if(typeOfEdit == "add"){
+                add(req, res, (films) => {
+					res.redirect('/');
+				});
+			} else if (typeOfEdit == "change"){
+				change(req, res,(films) => {
+					res.redirect('/');
+				});
+			}
+		}
+	}
+}
+
 app.post('/', (req, res, next) => {
     uploader(req, res, function (err) {
 	   
        if(Boolean(req.body.edit)){
-            change(req, res,(films) => {
-				res.redirect('/');
-			});
+		    //если редактируем
+			editor(err, req, res, "change");
 	   }else{
-			if (err){
-				list((err, films) => {
-					res.render('films.twig',{films: films, hint: messages[0]});
-				});
-			} else {
-				if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') !== -1){
-					add(req, res, (films) => {
-						res.redirect('/');
-					});
-				} else if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') == -1){
-					list((err, films) => {
-						res.render('films.twig',{films: films, hint: messages[1]});
-					});
-				}else{
-					add(req, res, (films) => {
-						res.redirect('/');
-					});
-				}
-			}
+		    //если добавляем новое
+			editor(err, req, res, "add");
 	   }
 
 	});
