@@ -20,9 +20,14 @@ window.onload = function(){
           } else {
             console.log("GO!");
             console.log(xhr.status + ': ' + xhr.statusText);
-            e.target.parentNode.remove();
+            e.target.parentNode.parentNode.remove();
           }
         }
+    }else if(e.target.classList.contains("edit")){
+        let item1 = e.target.closest("li").nextElementSibling;
+        item1.classList.toggle("hide");
+        e.target.classList.toggle("toggled");
+        e.target.closest(".redact").nextElementSibling.classList.toggle("hide");
     }
   });
 

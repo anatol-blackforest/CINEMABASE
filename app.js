@@ -11,6 +11,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const fs = require('fs');
+const util = require('util');
+
 let messages = ["Very big image! (must be less than 2 mb)", "Please upload image only!"];
 
 app.set("twig options", {strict_variables: false});
@@ -28,25 +31,33 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res, next) => {
     uploader(req, res, function (err) {
-		if (err){
-			list((err, films) => {
-				res.render('films.twig',{films: films, hint: messages[0]});
+	   
+       if(Boolean(req.body.edit)){
+            change(req, res,(films) => {
+				res.redirect('/');
 			});
-		} else {
-			if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') !== -1){
-				add(req, res, (films) => {
-					res.redirect('/');
-				});
-			} else if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') == -1){
+	   }else{
+			if (err){
 				list((err, films) => {
-					res.render('films.twig',{films: films, hint: messages[1]});
+					res.render('films.twig',{films: films, hint: messages[0]});
 				});
-			}else{
-				add(req, res, (films) => {
-					res.redirect('/');
-				});
+			} else {
+				if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') !== -1){
+					add(req, res, (films) => {
+						res.redirect('/');
+					});
+				} else if (req.file && req.file.mimetype && req.file.mimetype.indexOf('image') == -1){
+					list((err, films) => {
+						res.render('films.twig',{films: films, hint: messages[1]});
+					});
+				}else{
+					add(req, res, (films) => {
+						res.redirect('/');
+					});
+				}
 			}
-		}
+	   }
+
 	});
 });
 

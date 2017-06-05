@@ -5,18 +5,41 @@
 }
 .poster > img{
     width:100%;
-    margin: 0 20px 20px 0
 }
-.delete{
+.redact{
+    display:block;
+	position:relative;
+    overflow: hidden;
+    width:100%;
+    padding-bottom:20px;
+	/*right:0;
+	top:20px;*/
+}
+.delete, .edit{
     cursor:pointer;
-    display:inline-block;
-	background:#d72a18;
+    display:block;
 	color:#fff;
 	padding:0 10px;
-	position:absolute;
-	right:0;
-	top:40px;
+	position:relative;
+    float: right;
 	border-radius: 5px;
+    margin-left:10px;
+}
+.delete{
+	background:#d72a18;
+}
+.edit::before{
+	content:"X";
+}
+.edit.toggled::before{
+	content:"-";
+}
+.edit{
+	background:green;
+    float:left
+}
+.hide{
+    display: none
 }
 
 /* TAGS */
@@ -48,11 +71,11 @@ ul, ol {list-style:none}
 .tail-bottom {background:url(../design/tail-bottom.gif) left bottom repeat-x}
 /* FORMS */
 #upload {clear:right;width:842px;overflow:hidden}
-#upload fieldset {border:none;float:left}
-#upload .field {clear:both; width:730px}
-#upload label {float:left;width:100%; line-height:18px;padding-bottom:8px;color:#fff}
-#upload input {float:right;width:293px;padding:1px 0 1px 3px;background:#000;border:1px solid #3a3a3a;color:#fff}
-#upload input.submit {
+ fieldset {border:none;float:left}
+ .field {clear:both; width:730px}
+ label {float:left;width:100%; line-height:18px;padding-bottom:8px;color:#fff}
+ input {float:right;width:293px;padding:1px 0 1px 3px;background:#000;border:1px solid #3a3a3a;color:#fff}
+ input.submit {
     float: right;
     cursor: pointer;
     height: 33px;
@@ -60,8 +83,8 @@ ul, ol {list-style:none}
     background: url(../design/link2-tail.gif) repeat-x left top;
     padding: 9px 15px 10px 15px;
 }
-#upload textarea {width:674px;height:174px;padding:2px 28px 1px 28px;background:url(../design/textarea-bg.gif) no-repeat left top;border:0;color:#fff;margin-bottom:15px;overflow:auto}
-#upload .link2 {float:right}
+ textarea {width:674px;height:174px;padding:2px 28px 1px 28px;background:url(../design/textarea-bg.gif) no-repeat left top;border:0;color:#fff;margin-bottom:15px;overflow:auto}
+ .link2 {float:right}
 /* LISTS */
 .movies {width:100%}
 .movies li {float:left;width:286px;margin-right:15px}
@@ -71,7 +94,7 @@ ul, ol {list-style:none}
 .movies li p {margin:5px 0 15px 0;padding-right:40px}
 .movies li p span {color:#fff}
 .list {margin-top:-30px}
-.list li {width:100%;overflow:hidden;vertical-align:top;line-height:1.714em;padding-top:40px;position:relative}
+.list li {width:100%;overflow:hidden;vertical-align:top;line-height:1.714em;padding-top:20px;position:relative}
 .list li img {float:left; }
 .list li a {text-decoration:none}
 .list li a:hover {color:#d72a18}
