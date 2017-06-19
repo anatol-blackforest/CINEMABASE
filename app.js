@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 	});
 });
 
+//Обработчик форм (на добавление и редактирование)
 
 let editor = function(err, req, res, typeOfEdit) {
 	//где typeOfEdit - тип формы (редактирование или добавление нового)
