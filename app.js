@@ -75,5 +75,10 @@ app.route("/")
 		});
 	});
 
+// ловим 404 ошибку
+app.use((req, res) => {
+	res.status(404).render("404.twig");
+});	
+
 app.listen(3000);
 console.log('Express server listening on port 3000');
