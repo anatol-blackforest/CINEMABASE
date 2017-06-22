@@ -67,13 +67,14 @@ app.route("/")
 			}
 
 		});
-	})
-    //удаляем
-	.delete((req, res, next) => {
-		deleting(req.query.ID, (err, films) => {
-			res.render('films.twig',{films: films});
-		});
 	});
+
+//удаляем
+app.delete("/delete/:id",(req, res, next) => {
+	deleting(req.params.id, (err, films) => {
+		res.render('films.twig',{films: films});
+	});
+});
 
 // ловим 404 ошибку
 app.use((req, res) => {

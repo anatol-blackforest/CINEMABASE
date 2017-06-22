@@ -11,7 +11,7 @@ window.onload = function(){
   document.addEventListener("click", function(e){
     if(e.target.className == "delete"){
         let xhr = new XMLHttpRequest();
-        xhr.open('DELETE', `/?ID=${e.target.dataset.delete}`, true);
+        xhr.open('DELETE', `/delete/${e.target.dataset.delete}`, true);
         xhr.send();
         xhr.onreadystatechange = function() { 
           if (xhr.readyState != 4) return;
